@@ -43,7 +43,7 @@
         </div>
 
         <div>
-            <h3 class="text-bold m-5">No item found for This Catagories</h3>
+            <h3 class="text-bold m-5" id="alert"><span id="hf">0</span> item found for This Catagories</h3>
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
                 <div class="container-fluid">
                     <a class="navbar-brand fw-bold" href="#">Short By View:</a>
@@ -70,6 +70,8 @@
         </div>
     </header>
 
+
+
     <main>
         <section>
             <div class="card mb-3 my-5" id="card" style="max-width: 100%;">
@@ -77,6 +79,14 @@
 
         </section>
     </main>
+    <!-- Loader  -->
+    <section class="d-none" id="loader">
+        <div style="height: 400px;" class="d-flex justify-content-center align-items-center">
+            <div class="spinner-border text-success" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </section>
 
 
 

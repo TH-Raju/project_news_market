@@ -6,7 +6,7 @@ const loadCategorie = async () => {
 
 }
 const displayCategorie = categorie => {
-    // console.log(categorie);
+    // console.log(categorie.);
     const catagories = document.getElementById("catagories");
     categorie.forEach(catagori => {
         const catagoriLi = document.createElement('li');
@@ -19,18 +19,25 @@ const displayCategorie = categorie => {
 }
 
 const displayId = async (id) => {
-    console.log(id);
+
+
+    // console.log(id);
     const url = `https://openapi.programming-hero.com/api/news/category/0${id}`;
     const res = await fetch(url);
     const data = await res.json();
     catagoriItem(data.data);
+    const h = document.getElementById('hf');
+    h.innerText = data.data.length;
+
 }
 
+
 const catagoriItem = item => {
-    console.log(item);
+    toggleLoader(true);
     const items = document.getElementById('card');
     items.innerHTML = '';
     item.forEach(itemCard => {
+        // console.log(itemCard.total_view === null ? 'done' : itemCard.total_view);
         const catagoriCard = document.createElement('div');
         catagoriCard.classList.add('row')
         catagoriCard.innerHTML = `
@@ -41,7 +48,7 @@ const catagoriItem = item => {
                     <div class="col-md-8">
                         <div class="card-body">
                             <h5 class="card-title" id="title">${itemCard.title}</h5>
-                            <p class="card-text">${itemCard.details} </p>
+                            <p class="card-text">${itemCard.details.slice(0, 350)},...<small>read more.</small> </p>
                         </div>
                         <div class="px-3">
                             <ul class="nav nav-pills nav-fill">
@@ -96,9 +103,22 @@ const catagoriItem = item => {
                         </div>
                     </div>`
         items.appendChild(catagoriCard);
+
     })
+    //stop loader
+    toggleLoader(false);
+
+}
 
 
+
+const toggleLoader = load => {
+    const loadSection = document.getElementById('loader');
+    if (load) {
+        loadSection.classList.remove('d-none');
+    } else {
+        loadSection.classList.add('d-none');
+    }
 }
 
 // ${catagori.category_id}
