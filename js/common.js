@@ -1,4 +1,5 @@
 const loadCategorie = async () => {
+    toggleLoader(true);
     const url = 'https://openapi.programming-hero.com/api/news/categories';
     const res = await fetch(url);
     const data = await res.json();
@@ -6,7 +7,6 @@ const loadCategorie = async () => {
 
 }
 const displayCategorie = categorie => {
-    // console.log(categorie.);
     const catagories = document.getElementById("catagories");
     categorie.forEach(catagori => {
         const catagoriLi = document.createElement('li');
@@ -19,9 +19,7 @@ const displayCategorie = categorie => {
 }
 
 const displayId = async (id) => {
-
-
-    // console.log(id);
+    toggleLoader(true);
     const url = `https://openapi.programming-hero.com/api/news/category/0${id}`;
     const res = await fetch(url);
     const data = await res.json();
@@ -33,7 +31,6 @@ const displayId = async (id) => {
 
 
 const catagoriItem = item => {
-    toggleLoader(true);
     const items = document.getElementById('card');
     items.innerHTML = '';
     item.forEach(itemCard => {
@@ -105,6 +102,7 @@ const catagoriItem = item => {
         items.appendChild(catagoriCard);
 
     })
+
     //stop loader
     toggleLoader(false);
 
@@ -120,9 +118,6 @@ const toggleLoader = load => {
         loadSection.classList.add('d-none');
     }
 }
-
-// ${catagori.category_id}
-// console.log(itemCard.author.name);
 
 loadCategorie();
 displayId()
