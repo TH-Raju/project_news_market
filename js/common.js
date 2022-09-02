@@ -19,7 +19,7 @@ const displayCategorie = categorie => {
 }
 
 const displayId = async (id) => {
-    // console.log(id);
+    console.log(id);
     const url = `https://openapi.programming-hero.com/api/news/category/0${id}`;
     const res = await fetch(url);
     const data = await res.json();
@@ -29,11 +29,10 @@ const displayId = async (id) => {
 const catagoriItem = item => {
     console.log(item);
     const items = document.getElementById('card');
+    items.innerHTML = '';
     item.forEach(itemCard => {
-
         const catagoriCard = document.createElement('div');
         catagoriCard.classList.add('row')
-
         catagoriCard.innerHTML = `
         <div class="col-md-4 my-5">
                         <img src="${itemCard.image_url}"
@@ -77,7 +76,13 @@ const catagoriItem = item => {
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            ...
+                                        <div class="card" style="width: 18rem;">
+                                        <img src="${itemCard.author.img}" class="card-img-top" alt="...">
+                                        <div class="card-body">
+                                          <h2 class="card-text fs-4">Name: ${itemCard.author.name}</h2>
+                                          <p class="card-text"><span class="card-text text-bolder">Publishe Date: </span>${itemCard.author.published_date}</p>
+                                        </div>
+                                      </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-secondary"
@@ -95,7 +100,6 @@ const catagoriItem = item => {
 
 
 }
-
 
 // ${catagori.category_id}
 // console.log(itemCard.author.name);
