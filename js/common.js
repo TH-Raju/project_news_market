@@ -38,7 +38,6 @@ const catagoriItem = item => {
     const result = item.sort((a, b) => (b.total_view - a.total_view));
 
     result.forEach(itemCard => {
-        console.log(itemCard._id);
         // let array = itemCard.total_view === null ? '0' : itemCard.total_view;
         let array = arr.push(itemCard.total_view);
 
@@ -72,19 +71,18 @@ const catagoriItem = item => {
                                 </li>
                                 <li class="nav-item">
 
-                                    <a href="" data-bs-toggle="modal" data-bs-target="#${itemCard._id}"><i
+                                    <a href="" data-bs-toggle="modal" data-bs-target="#exampleModal_${itemCard._id}"><i
                                             class="fa-sharp fa-solid fa-arrow-right fs-3"></i></a>
                                 </li>
                             </ul>
                             <!-- Button trigger modal -->
-
                             <!-- Modal -->
-                            <div class="modal fade" id="${itemCard._id}" tabindex="-1" aria-labelledby="${itemCard._id}Label"
+                            <div class="modal fade" id="exampleModal_${itemCard._id}" tabindex="-1" aria-labelledby="exampleModalLabel_${itemCard._id}"
                                 aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="${itemCard._id}Label">Details</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel_${itemCard._id}">Details</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
@@ -116,7 +114,17 @@ const catagoriItem = item => {
 
 
     })
+    // console.log(arr);
+    // const viewArray = [];
+    // for (let ar of arr) {
+    //     if (ar == null) {
+    //         continue;
+    //     } else {
+    //         viewArray.push(ar);
+    //     }
+    // }
 
+    // console.log(viewArray);
 
 
 
