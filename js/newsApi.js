@@ -37,10 +37,7 @@ const catagoriItem = item => {
     const result = item.sort((a, b) => (b.total_view - a.total_view));
 
     result.forEach(itemCard => {
-        // let array = itemCard.total_view === null ? '0' : itemCard.total_view;
         let array = arr.push(itemCard.total_view);
-
-
         const catagoriCard = document.createElement('div');
         catagoriCard.classList.add('row')
         catagoriCard.innerHTML = `
@@ -111,16 +108,12 @@ const catagoriItem = item => {
                         </div>
                     </div>`
         items.appendChild(catagoriCard);
-
-
     })
-
 
     //stop loader
     toggleLoader(false);
 
 }
-
 
 
 const toggleLoader = load => {
