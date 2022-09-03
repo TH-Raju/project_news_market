@@ -31,10 +31,17 @@ const displayId = async (id) => {
 
 
 const catagoriItem = item => {
+    console.log(item);
     const items = document.getElementById('card');
     items.innerHTML = '';
-    item.forEach(itemCard => {
-        // console.log(itemCard.total_view === null ? 'done' : itemCard.total_view);
+    const arr = [];
+    const result = item.sort((a, b) => (b.total_view - a.total_view));
+
+    result.forEach(itemCard => {
+        // let array = itemCard.total_view === null ? '0' : itemCard.total_view;
+        let array = arr.push(itemCard.total_view);
+
+
         const catagoriCard = document.createElement('div');
         catagoriCard.classList.add('row')
         catagoriCard.innerHTML = `
@@ -52,12 +59,14 @@ const catagoriItem = item => {
                                 <li class="nav-item">
                                     <div class="d-flex align-self-center">
                                         <img src="${itemCard.author.img}"
-                                            class="rounded-circle" style="height: 40px; width: 40px;" alt="">
-                                        <h5 class="card-text px-2">${itemCard.author.name}</h5>
+                                            class="rounded-circle" style="height: 50px; width: 50px;" alt="">
+                                        <div>
+                                        <h5 class="card-text px-2">${itemCard.author.name === null ? "No active data" : itemCard.author.name}</h5>
+                                        <p class="card-text"><span class="card-text ms-4"></span>${itemCard.author.published_date}</p></div>
                                     </div>
                                 </li>
                                 <li class="nav-item">
-                                    <h5 class="card-text text-bold"><i class="fa-regular fa-eye fs-5 me-2"></i>${itemCard.total_view
+                                    <h5 class="card-text text-bold"><i class="fa-regular fa-eye fs-5 me-2"></i>${itemCard.total_view === null ? "No View" : itemCard.total_view
             }</h5>
                                 </li>
                                 <li class="nav-item">
@@ -67,7 +76,6 @@ const catagoriItem = item => {
                                 </li>
                             </ul>
                             <!-- Button trigger modal -->
-
 
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -83,8 +91,10 @@ const catagoriItem = item => {
                                         <div class="card" style="width: 18rem;">
                                         <img src="${itemCard.author.img}" class="card-img-top" alt="...">
                                         <div class="card-body">
-                                          <h2 class="card-text fs-4">Name: ${itemCard.author.name}</h2>
+                                          <h2 class="card-text fs-4">Name: ${itemCard.author.name === null ? "No active data" : itemCard.author.name}</h2>
                                           <p class="card-text"><span class="card-text text-bolder">Publishe Date: </span>${itemCard.author.published_date}</p>
+                                          <h5 class="card-text text-bold"><i class="fa-regular fa-eye fs-5 me-2"></i>${itemCard.total_view === null ? "No View" : itemCard.total_view
+            }</h5>
                                         </div>
                                       </div>
                                         </div>
@@ -97,11 +107,18 @@ const catagoriItem = item => {
                                 </div>
                             </div>
                             <!-- Modal Close  -->
+
+
                         </div>
                     </div>`
         items.appendChild(catagoriCard);
 
+
     })
+
+
+
+
 
     //stop loader
     toggleLoader(false);
@@ -120,4 +137,5 @@ const toggleLoader = load => {
 }
 
 loadCategorie();
-displayId()
+displayId();
+displayId(8);
