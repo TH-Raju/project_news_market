@@ -31,7 +31,6 @@ const displayId = async (id) => {
 
 
 const catagoriItem = item => {
-    console.log(item);
     const items = document.getElementById('card');
     items.innerHTML = '';
     const arr = [];
@@ -92,6 +91,7 @@ const catagoriItem = item => {
                                         <div class="card-body">
                                           <h2 class="card-text fs-4">Name: ${itemCard.author.name === null ? "No active data" : itemCard.author.name}</h2>
                                           <p class="card-text"><span class="card-text text-bolder">Publishe Date: </span>${itemCard.author.published_date}</p>
+                                          <p class="card-text"><span class="card-text text-bolder fs-5">Rating's: </span>${itemCard.rating.number}</p>
                                           <h5 class="card-text text-bold"><i class="fa-regular fa-eye fs-5 me-2"></i>${itemCard.total_view === null ? "No View" : itemCard.total_view
             }</h5>
                                         </div>
@@ -114,19 +114,6 @@ const catagoriItem = item => {
 
 
     })
-    // console.log(arr);
-    // const viewArray = [];
-    // for (let ar of arr) {
-    //     if (ar == null) {
-    //         continue;
-    //     } else {
-    //         viewArray.push(ar);
-    //     }
-    // }
-
-    // console.log(viewArray);
-
-
 
 
     //stop loader
@@ -146,5 +133,4 @@ const toggleLoader = load => {
 }
 
 loadCategorie();
-displayId();
 displayId(8);
